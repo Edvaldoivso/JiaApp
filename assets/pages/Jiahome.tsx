@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, SafeAreaView, Text, Button } from "react-native";
 import { createNativeStackNavigator} from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { styles } from "../styles/styles";
+import CheckLocal from "./CheckLocal";
 
 
-
-export function Home(  { navigation } ) {
+export  function Home(  { navigation } ) {
  
   return (
       <SafeAreaView style={styles.SafeArea}>
@@ -16,10 +16,14 @@ export function Home(  { navigation } ) {
          
         </View>
 
-         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+         <View style={styles.container}>
       
       <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
+
+       <Button title="Options" onPress={() => navigation.navigate("CheckLocal",{
+       
+       })} />
+     </View>
 
        
       </SafeAreaView>

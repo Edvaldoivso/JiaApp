@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 2,
+    
   },
 
   //Style Buttons
@@ -28,7 +29,7 @@ export const styles = StyleSheet.create({
       width:80,
       color:"#01DF74",
       fontSize:15,
-      borderBottomEndRadius:5
+      borderRadius:5
   },
   //Textos de Leitura
 
@@ -46,4 +47,26 @@ export const styles = StyleSheet.create({
   //Textos de Alerta
 
   //Textos de Sucesso
+
+  //TextArea
+  TexArea:{
+    
+    color:"#01DF74",
+    borderColor:"#01DF74",
+    borderStyle:"solid",
+    borderRadius:5,
+    borderWidth:1,
+    height:50,
+    paddingBottom:10,
+    marginBottom:190
+  },
+
+
+  //Imagens
+
+imagens:{
+  backgroundColor:"#ffffff",
+  height:270,
+  width:250,
+}
 });

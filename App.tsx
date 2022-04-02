@@ -1,65 +1,60 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, Button, StyleSheet, Text, View } from "react-native";
+import {
+  SafeAreaView,
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+  Image,
+} from "react-native";
 import { styles } from "./assets/styles/styles";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer } from '@react-navigation/native';
-import { Home } from "./assets/pages/home"
-
-
+import { NavigationContainer } from "@react-navigation/native";
+import { Home } from "./assets/pages/Jiahome";
+import CheckLocal from "./assets/pages/CheckLocal";
 
 //Import Dep.
 const Stack = createNativeStackNavigator();
 
-
-
 //FUNÇÃO DE AUTENTICAR
 
-function Autentication( { navigation } ){
+function Autentication({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button 
-      title="AUTENTICAR"
-       onPress={() => navigation.navigate('Home')} />
-    </View>
+    <SafeAreaView style={styles.SafeArea}>
+      <View style={styles.container}>
+        <View>
+          <Image
+            style={styles.imagens}
+            source={require("./assets/imagens/LogoJia.jpg")}
+          />
+        </View>
+      </View>
+
+      <TextInput
+        style={styles.TexArea}
+        placeholder="useless placeholder"
+        keyboardType="numeric"
+      />
+
+      <Button title="AUTENTICAR" onPress={() => navigation.navigate("Home")} />
+    </SafeAreaView>
   );
 }
 
-
-
-//Função Cria as Stack Pages
-
-function JiaStack(){
-
-  return(
-    <Stack.Navigator>
-    <Stack.Screen name="Faca Login" component={Autentication}
-    />  
-    <Stack.Screen name="Home" component={Home}
-    />    
-    </Stack.Navigator>
-  )
-}
-
-
-
-
-
 export default function App() {
   //Retorna a Stack Navigation
-  return(
+  return (
+
+    
     <NavigationContainer>
-    < JiaStack />
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={Autentication} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="CheckLocal" component={CheckLocal} />
+      </Stack.Navigator>
     </NavigationContainer>
-
-
-
-
-  )
-
-
-  }
-
-
-
-
+  );
+}
