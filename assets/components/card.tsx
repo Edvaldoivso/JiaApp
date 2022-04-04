@@ -7,14 +7,22 @@ import {
   View,
   Alert,
   AccessibilityInfo,
-  
 } from "react-native";
 
-export function CardItem() {
+
+
+
+let valr = false
+export function CardItem({ title }) {
   return (
-    <TouchableOpacity>
+      
+    <TouchableOpacity
+    
+    onPress={ ()=>{valr =!valr; alert("Selecionado  " + valr)} }
+    >
       <View style={styles.container}>
-        <Text style={styles.text}>Titulo</Text>
+        <Text style={styles.text}>{title}</Text>
+       
       </View>
     </TouchableOpacity>
   );
@@ -41,3 +49,7 @@ const styles = StyleSheet.create({
     width: 50,
   },
 });
+function useState(arg0: string): [any, any] {
+    throw new Error("Function not implemented.");
+}
+

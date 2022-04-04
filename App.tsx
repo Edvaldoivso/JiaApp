@@ -16,6 +16,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Home } from "./assets/pages/Jiahome";
 import CheckLocal from "./assets/pages/CheckLocal";
 
+
+
+
 //Import Dep.
 const Stack = createNativeStackNavigator();
 
@@ -39,7 +42,11 @@ function Autentication({ navigation }) {
         keyboardType="numeric"
       />
 
-      <Button title="AUTENTICAR" onPress={() => navigation.navigate("Home")} />
+      <Button title="AUTENTICAR" onPress={() => navigation.navigate("Home", 
+           { nome:"Edvaldo" , numero:'555'}
+      
+      
+      )} />
     </SafeAreaView>
   );
 }
@@ -49,9 +56,46 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={Autentication} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="CheckLocal" component={CheckLocal} />
+        <Stack.Screen
+          name="Login"
+          component={Autentication}
+
+          options={{
+            title: "Faca o Login",
+            headerStyle: {
+              backgroundColor: "red",
+            },
+            headerTintColor: "#f0f0f0",
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+
+          options={{
+            title: "VOLTAR",
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
+            headerTintColor: "#ffffff",
+          }}
+
+        />
+
+        <Stack.Screen
+          name="CheckLocal"
+          component={CheckLocal}
+
+          options={{
+            title: "VOLTAR",
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
+            headerTintColor: "#ffffff",
+          }}
+
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

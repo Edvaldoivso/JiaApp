@@ -74,7 +74,7 @@ export const styles = StyleSheet.create({
   },
 
   listaNotify: {
-    height: 600,
+    height: 560,
   },
 
 
