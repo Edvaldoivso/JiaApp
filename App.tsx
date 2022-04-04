@@ -47,8 +47,6 @@ function Autentication({ navigation }) {
 export default function App() {
   //Retorna a Stack Navigation
   return (
-
-    
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={Autentication} />

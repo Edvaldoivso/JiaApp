@@ -1,38 +1,63 @@
-import React, { useState } from "react";
-import { View, SafeAreaView, Text, Button } from "react-native";
-import { createNativeStackNavigator} from "@react-navigation/native-stack";
+import React from "react";
+import {SectionList, View, Text, SafeAreaView, Button, ScrollView , FlatList } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { styles } from "../styles/styles";
-import CheckLocal from "./CheckLocal";
+import { CardItem } from "../components/card";
 
 
-export  function Home(  { navigation } ) {
- 
+export function Home({ navigation }) {
+  //Entendimento do useEffect
+
   return (
-      <SafeAreaView style={styles.SafeArea}>
-        <View style={styles.container}>
-          <Text style={styles.TexTitle}> Bem vindo ao Novo JIA </Text>
-          <Text style={styles.TexLeitura}>Bem vindo ao JiaApp</Text>
-         
-        </View>
+    <SafeAreaView style={styles.SafeArea}>
+      <View style={styles.listacontainer}>
+        <ScrollView style={styles.listas} horizontal={true}>
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+        </ScrollView>
 
-         <View style={styles.container}>
+        <Button
+          title="Check-in "
+          onPress={() => navigation.navigate("CheckLocal", {})}
+        />
+
+        <View style={styles.listaNotify}>
+          <Text style={styles.TexTitle}>NOTIFICAÇÕES</Text>
+          <FlatList
       
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+        data={[
+          {key: 'Devin'},
+          {key: 'Dan'},
+          {key: 'Dominic'},
+          {key: 'Jackson'},
+          {key: 'James'},
+          {key: 'Joel'},
+          {key: 'John'},
+          {key: 'Jillian'},
+          {key: 'Jimmy'},
+          {key: 'Julie'},
+        ]}
+        //renderItem={({item}) => <Text style={styles.TexTitle}>{item.key}</Text>}
+        renderItem={({ item })=><CardItem />}
+numColumns={3}
+         />
 
-       <Button title="Options" onPress={() => navigation.navigate("CheckLocal",{
-       
-       })} />
-     </View>
-
-       
-      </SafeAreaView>
-    );
+         
+        
 
 
-
-
-
-
-
+        </View>
+      </View>
+    </SafeAreaView>
+  );
 }
