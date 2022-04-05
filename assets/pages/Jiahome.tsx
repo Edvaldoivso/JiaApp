@@ -12,26 +12,27 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { styles } from "../styles/styles";
 import { CardItem } from "../components/card";
+import APIwheter from "../API/wheter";
 
 export function Home({ navigation, route }) {
   //Entendimento do useEffect
 
-let [luz , setState]=useState(false)
-let [icon , setStateIcon]=useState()
+  let [luz, setState] = useState(false);
+  let [icon, setStateIcon] = useState();
 
   return (
     <SafeAreaView style={styles.SafeArea}>
       <View style={styles.listacontainer}>
         <Text style={styles.TexTitle}>Jia 🤖 Altomação</Text>
         <ScrollView style={styles.listas} horizontal={true}>
-
-          <CardItem title={"LUZ CORREDOR"}/>
+          
+          <CardItem title={"LUZ CORREDOR"} />
           <CardItem title={"LUZ ESCADA "} />
           <CardItem title={"LUZ SALA "} />
           <CardItem title={"LUZ QUARTO "} />
           <CardItem title={"LUZ BANHEIRO "} />
           <CardItem title={"LUZ COZINHA "} />
-          <CardItem title={"LUZ TRAZ "} />
+          <CardItem title={"LUZ TRAZ 4"} />
         </ScrollView>
 
         <Button
@@ -41,11 +42,11 @@ let [icon , setStateIcon]=useState()
 
         <View style={styles.listaNotify}>
           <Text style={styles.TexTitle}>
-            Olá {route.params?.nome} o que temos para hoje a seguir.
+            {route.params?.nome} o que temos para hoje?
           </Text>
+           <APIwheter/>
           <FlatList
             data={[
-              { key: "Previsão do Tempo" },
               { key: "Controle de Regas" },
               { key: "Contas Residenciais" },
               { key: "Lista de Compras" },
@@ -60,7 +61,7 @@ let [icon , setStateIcon]=useState()
             ]}
             //renderItem={({item}) => <Text style={styles.TexTitle}>{item.key}</Text>}
             renderItem={({ item }) => (
-              <CardItem title={item.key} link={"Text"} />
+              <CardItem title={item.key} />
             )}
             numColumns={3}
           />
