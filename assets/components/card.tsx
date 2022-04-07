@@ -1,55 +1,51 @@
 import React, { Component } from "react";
-import {
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  TouchableOpacityProps,
-  View,
-  Alert,
-  AccessibilityInfo,
-} from "react-native";
+import { Vibration } from "react-native";
+import { Text, StyleSheet, View, Pressable } from "react-native";
 
-
-
-
-let valr = false
+let valr = false;
 export function CardItem({ title }) {
   return (
-      
-    <TouchableOpacity
-    
-    onPress={ ()=>{valr =!valr; alert("Selecionado  " + valr)} }
+    <Pressable
+      style={styles.containerscroll}
+      onLongPress={() => {
+        valr = !valr;
+        alert("Selecionado  " + valr);
+        Vibration.vibrate();
+      }}
+      delayLongPress={400}
     >
-      <View style={styles.container}>
-        <Text style={styles.text}>{title}</Text>
-       
+      <View style={styles.cardacao}>
+        <View>
+          <Text style={styles.text}>{title}</Text>
+        </View>
+        <View>
+          <Text>EM USO</Text>
+        </View>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    height: 120,
-    width: 120,
+  containerscroll: {
+    height: 130,
+    width:200,
     alignItems: "center",
-    backgroundColor: "#DDDDDD",
+    backgroundColor: "#9DCC9B",
     padding: 10,
     margin: 5,
     borderRadius: 7,
   },
+
   text: {
-    fontSize: 16,
+    fontSize: 17,
     color: "#000000",
     padding: 10,
   },
 
-  imagem: {
-    height: 50,
-    width: 50,
+  cardacao:{
+    alignItems:"center"
   },
-});
-function useState(arg0: string): [any, any] {
-    throw new Error("Function not implemented.");
-}
 
+ 
+});

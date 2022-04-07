@@ -5,6 +5,7 @@ import {
   Pressable,
   Image,
   Vibration,
+  View,
 } from "react-native";
 import axios from "axios";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -111,7 +112,6 @@ export default function APIwheter() {
     async function ImagemTempo() {
       const { data } = await APItempo.get("Sao-Paulo");
       setImagem(data.current.condition.icon);
-      
     }
     ImagemTempo();
   }, []);
@@ -119,37 +119,54 @@ export default function APIwheter() {
   //COMPONENTE DE RENDER
 
   return (
-    <SafeAreaView style={styleapi.apicontainer}>
-      <Pressable
-        onLongPress={() => {
-            Vibration.vibrate()
-            ; atualizar = !atualizar;
-          alert(
-            "Já choveu: " + precipitacao + "mm/mt e o " + " UV em:" + UV + "% "
-          );
-        }}
-        delayLongPress={300}
-      >
-        <Text style={styleapi.textitulo}>
-          <Image
-            source={{ uri: "https://" + imagem }}
-            style={{ width: 40, height: 40 }}
-          />
-        </Text>
-        <Text style={styleapi.textitulo}>{temperatura}ºC</Text>
-        <Text style={styleapi.textitulo}>{humidade}%Umi.</Text>
-      </Pressable>
-    </SafeAreaView>
+    <Pressable
+      style={styleapi.apicontainer}
+      onLongPress={() => {
+        Vibration.vibrate();
+        atualizar = !atualizar;
+        alert(
+          "Mais detalhes em curso"
+        );
+      }}
+      delayLongPress={300}
+    >
+
+
+      <View style={styleapi.Temperatura}>
+        <Text style={styleapi.textitulo}>Clima</Text>
+
+         <Image
+          source={{ uri: "https://" + imagem }}
+          style={{ width: 55, height: 55 }}
+        />
+        <Text style={styleapi.textitulo}> { temperatura } ºC</Text>
+        
+      </View>
+
+
+
+      <View style={styleapi.Previsao}>
+      
+        <Text>Chuva {precipitacao} mm/m2</Text>
+        <Text>UV { UV } % </Text>
+        <Text>{humidade}% Umidade</Text>
+      </View>
+
+
+
+
+    </Pressable>
   );
 }
 
 const styleapi = StyleSheet.create({
   apicontainer: {
     justifyContent: "flex-start",
-    alignItems: "center",
-    height: 150,
-    width: 120,
-    backgroundColor: "#819FF7",
+    alignSelf: "auto",
+    flexDirection: "row",
+    height: 160,
+    padding: 10,
+    backgroundColor: "#9DCC9B",
     margin: 5,
     borderRadius: 7,
   },
@@ -165,7 +182,22 @@ const styleapi = StyleSheet.create({
     padding: 10,
   },
 
-  listaapi: {
+  cardtempo: {
+    flexDirection: "row",
     backgroundColor: "grey",
+    height: 160,
+  },
+
+  Temperatura: {
+    height: 160,
+    width:100,
+    color: "#00FFFF",
+    padding: 2,
+  },
+
+  Previsao: {
+    height: 160,
+    color: "#ffffff",
+    padding: 2,
   },
 });

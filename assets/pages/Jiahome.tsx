@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import {
-  SectionList,
-  View,
+   View,
   Text,
   SafeAreaView,
-  Button,
   ScrollView,
-  FlatList,
+  StyleSheet,
+  Pressable,
 } from "react-native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer } from "@react-navigation/native";
-import { styles } from "../styles/styles";
 import { CardItem } from "../components/card";
 import APIwheter from "../API/wheter";
+import  CalendarioPlantil  from "../pages/calendarioPlantil";
+import  Cardsaude  from "../pages/cardsaude";
 
 export function Home({ navigation, route }) {
   //Entendimento do useEffect
@@ -21,11 +19,13 @@ export function Home({ navigation, route }) {
   let [icon, setStateIcon] = useState();
 
   return (
-    <SafeAreaView style={styles.SafeArea}>
-      <View style={styles.listacontainer}>
-        <Text style={styles.TexTitle}>Jia 🤖 Altomação</Text>
-        <ScrollView style={styles.listas} horizontal={true}>
-          
+    <SafeAreaView style={HomeStyle.containe}>
+      <View style={HomeStyle.cabecalho}>
+        <Text>Jia 🤖 Altomação</Text>
+      </View>
+
+      <View style={HomeStyle.listascroll}>
+        <ScrollView horizontal={true}>
           <CardItem title={"LUZ CORREDOR"} />
           <CardItem title={"LUZ ESCADA "} />
           <CardItem title={"LUZ SALA "} />
@@ -34,39 +34,69 @@ export function Home({ navigation, route }) {
           <CardItem title={"LUZ COZINHA "} />
           <CardItem title={"LUZ TRAZ 4"} />
         </ScrollView>
+      </View>
 
-        <Button
-          title="Check-in "
+      <View style={HomeStyle.viewbutton}>
+        <Pressable
+          style={HomeStyle.estilobotao}
+          onPress={() => alert("em construcao")}
+        >
+          <Text>Menu</Text>
+        </Pressable>
+
+        <Pressable
+          style={HomeStyle.estilobotao}
           onPress={() => navigation.navigate("CheckLocal")}
-        />
+        >
+          <Text> "Check-in "</Text>
+        </Pressable>
+      </View>
 
-        <View style={styles.listaNotify}>
-          <Text style={styles.TexTitle}>
-            {route.params?.nome} o que temos para hoje?
-          </Text>
-           <APIwheter/>
-          <FlatList
-            data={[
-              { key: "Controle de Regas" },
-              { key: "Contas Residenciais" },
-              { key: "Lista de Compras" },
-              { key: "Transporte" },
-              { key: "Criar Aviso" },
-              { key: "Traduzir Canis" },
-              { key: "Traduzir Catus" },
-              { key: "Traduzir Amazona" },
-              { key: "Calendario Plantil" },
-              { key: "Diagnósticos de Saude" },
-              { key: "Cameras" },
-            ]}
-            //renderItem={({item}) => <Text style={styles.TexTitle}>{item.key}</Text>}
-            renderItem={({ item }) => (
-              <CardItem title={item.key} />
-            )}
-            numColumns={3}
-          />
-        </View>
+      <View>
+        <ScrollView>
+          <APIwheter />
+          <CalendarioPlantil/>
+          <Cardsaude/>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
 }
+
+const HomeStyle = StyleSheet.create({
+  cabecalho: {
+    alignContent: "center",
+    alignItems: "center",
+  },
+
+  containe: {
+    flex: 1,
+    padding: 5,
+    backgroundColor: "#D5E4CF",
+  },
+
+  listascroll: {
+    height: 150,
+  },
+
+  viewbutton: {
+    padding: 10,
+    minHeight: 100,
+    maxHeight: 80,
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
+  estilobotao: {
+    padding:10,
+    justifyContent: "space-between",
+    alignContent: "center",
+    alignItems: "center",
+    minWidth: 180,
+    maxWidth: 200,
+    minHeight: 50,
+    backgroundColor: "#2A836B",
+    borderRadius: 5,
+  },
+});
