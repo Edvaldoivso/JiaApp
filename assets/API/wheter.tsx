@@ -55,6 +55,7 @@ interface Result {
 
 //AXIOS
 export default function APIwheter() {
+  
   const APItempo = axios.create({
     baseURL:
       "http://api.weatherapi.com/v1/current.json?key=779744a5afc94dd4aff05614212311&q=",

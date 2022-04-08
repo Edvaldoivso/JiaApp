@@ -1,43 +1,44 @@
-import React from "react";
-import { Text ,SafeAreaView, Pressable, Vibration, View ,Image ,StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  Text,
+  SafeAreaView,
+  Pressable,
+  Vibration,
+  View,
+  Image,
+  StyleSheet,
+} from "react-native";
 
-
-export default function Cardsaude(){
+export default function Cardsaude() {
+  let [valorPeso, setPeso] = useState(72);
+  let [valorAltura, setAltura] = useState(1.71);
+  let [valorIMC, setIMC] = useState();
 
   return (
     <Pressable
       style={styleapi.apicontainer}
       onLongPress={() => {
         Vibration.vibrate();
-      
-        alert(
-          "Adcionando as plantas"
-        );
+
+        alert("Saude em construcao");
       }}
       delayLongPress={300}
     >
-
-
       <View style={styleapi.Temperatura}>
         <Text style={styleapi.textitulo}>SAÚDE</Text>
-     
+        <Image
+          source={require("../imagens/coração.png")}
+          style={{ width: 50, height: 50 }}
+        />
+         <Text>{valorPeso} Kg</Text>
       </View>
-
-
 
       <View style={styleapi.Previsao}>
-      
-        <Text>BATIMENTOS</Text>
-        <Text>PRESSÃO</Text>
-        <Text>ALTURA</Text>
-         <Text>PESO</Text>
-         <Text>IMC</Text>
-       
+        <Text>😎 Sua saúde Hoje</Text>
+        <Text>90 bPM</Text>
+        <Text>{valorAltura} mt</Text>
+        <Text>IMC: {valorPeso / (valorAltura * valorAltura)} </Text>
       </View>
-
-
-
-
     </Pressable>
   );
 }
@@ -73,7 +74,7 @@ const styleapi = StyleSheet.create({
 
   Temperatura: {
     height: 160,
-    width:100,
+    width: 100,
     color: "#00FFFF",
     padding: 2,
   },
@@ -84,4 +85,3 @@ const styleapi = StyleSheet.create({
     padding: 2,
   },
 });
-

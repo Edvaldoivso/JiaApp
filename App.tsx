@@ -30,7 +30,7 @@ function Autentication({ navigation }) {
       <View style={Loginstyle.Logo}>
         <Image
           style={Loginstyle.imagens}
-          source={require("./assets/imagens/LogoJia.png")}
+          source={require("./assets/imagens/icon.png")}
         />
       <Text style={Loginstyle.titulos}>JIA app Gestão</Text>
 

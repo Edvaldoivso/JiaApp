@@ -55,8 +55,9 @@ export function Home({ navigation, route }) {
       <View>
         <ScrollView>
           <APIwheter />
+            <Cardsaude/>
           <CalendarioPlantil/>
-          <Cardsaude/>
+        
         </ScrollView>
       </View>
     </SafeAreaView>
