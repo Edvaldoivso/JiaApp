@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import {
-   View,
+  View,
   Text,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Pressable,
 } from "react-native";
+
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { CardItem } from "../components/card";
 import APIwheter from "../API/wheter";
-import  CalendarioPlantil  from "../pages/calendarioPlantil";
-import  Cardsaude  from "../pages/cardsaude";
+import CalendarioPlantil from "../pages/calendarioPlantil";
+import Cardsaude from "../pages/cardsaude";
+
+
 
 export function Home({ navigation, route }) {
   //Entendimento do useEffect
@@ -21,7 +25,7 @@ export function Home({ navigation, route }) {
   return (
     <SafeAreaView style={HomeStyle.containe}>
       <View style={HomeStyle.cabecalho}>
-        <Text>Jia 🤖 Altomação</Text>
+        <Text>Tarefas de Hoje 📝</Text>
       </View>
 
       <View style={HomeStyle.listascroll}>
@@ -35,30 +39,28 @@ export function Home({ navigation, route }) {
           <CardItem title={"LUZ TRAZ 4"} />
         </ScrollView>
       </View>
-
+      
       <View style={HomeStyle.viewbutton}>
-        <Pressable
-          style={HomeStyle.estilobotao}
-          onPress={() => alert("em construcao")}
+      
+        <Pressable style={HomeStyle.estilobotao} 
+        onPress={() => navigation.navigate("MENU")}
         >
-          <Text>Menu</Text>
+          <Text style={HomeStyle.textoTitulo}>➕Jia</Text>
         </Pressable>
 
         <Pressable
           style={HomeStyle.estilobotao}
           onPress={() => navigation.navigate("CheckLocal")}
         >
-          <Text> "Check-in "</Text>
+          <Text style={HomeStyle.textoTitulo}>☝️ Check-in</Text>
         </Pressable>
       </View>
 
       <View>
         <ScrollView>
           <APIwheter />
-            <Cardsaude/>
-          <CalendarioPlantil/>
-        
-        </ScrollView>
+          <Cardsaude />
+          </ScrollView>
       </View>
     </SafeAreaView>
   );
@@ -77,7 +79,7 @@ const HomeStyle = StyleSheet.create({
   },
 
   listascroll: {
-    height: 150,
+    height: 100,
   },
 
   viewbutton: {
@@ -90,7 +92,7 @@ const HomeStyle = StyleSheet.create({
   },
 
   estilobotao: {
-    padding:10,
+    padding: 10,
     justifyContent: "space-between",
     alignContent: "center",
     alignItems: "center",
@@ -100,4 +102,8 @@ const HomeStyle = StyleSheet.create({
     backgroundColor: "#2A836B",
     borderRadius: 5,
   },
+  textoTitulo:{
+     fontSize: 25,
+    textAlign:"center",
+  }
 });

@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { Vibration } from "react-native";
-import { Text, StyleSheet, View, Pressable } from "react-native";
+import React from "react";
+import { Vibration, Text, StyleSheet, View, Pressable } from "react-native";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
+
 
 let valr = false;
 export function CardItem({ title }) {
@@ -16,10 +17,19 @@ export function CardItem({ title }) {
     >
       <View style={styles.cardacao}>
         <View>
-          <Text style={styles.text}>{title}</Text>
+          <BouncyCheckbox
+            unfillColor="#D5E4CF"
+            fillColor="#2A836B"
+            text={title}
+            textStyle={styles.text}
+            onPress={(isChecked = true) => {
+              if (isChecked == true) alert("Menus Uma !");
+            }}
+          />
         </View>
         <View>
-          <Text>EM USO</Text>
+    
+         
         </View>
       </View>
     </Pressable>
@@ -28,8 +38,8 @@ export function CardItem({ title }) {
 
 const styles = StyleSheet.create({
   containerscroll: {
-    height: 130,
-    width:200,
+    height: 90,
+    width: 200,
     alignItems: "center",
     backgroundColor: "#9DCC9B",
     padding: 10,
@@ -43,9 +53,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 
-  cardacao:{
-    alignItems:"center"
+  cardacao: {
+    alignItems: "center",
   },
 
- 
 });

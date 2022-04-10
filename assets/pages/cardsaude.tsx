@@ -20,7 +20,7 @@ export default function Cardsaude() {
       onLongPress={() => {
         Vibration.vibrate();
 
-        alert("Saude em construcao");
+        alert("Atualizado com sucesso.");
       }}
       delayLongPress={300}
     >

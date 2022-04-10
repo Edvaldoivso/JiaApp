@@ -12,12 +12,20 @@ import {
   Touchable,
   Pressable,
 } from "react-native";
-import { styles } from "./assets/styles/styles";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { Home } from "./assets/pages/Jiahome";
 import CheckLocal from "./assets/pages/CheckLocal";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import Menus from "./assets/pages/Menus";
+import Cardsaude from "./assets/pages/cardsaude";
+import CalendarioPlantil from "./assets/pages/calendarioPlantil";
+import ListaCompras from "./assets/pages/ListaCompras";
+import Felis from "./assets/pages/Felis";
+import Canis from "./assets/pages/Canis";
+import ArmazenarComida from "./assets/pages/ArmazenarComida";
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Saude from "./assets/pages/Saude";
+
 
 //Import Dep.
 const Stack = createNativeStackNavigator();
@@ -32,8 +40,7 @@ function Autentication({ navigation }) {
           style={Loginstyle.imagens}
           source={require("./assets/imagens/icon.png")}
         />
-      <Text style={Loginstyle.titulos}>JIA app Gestão</Text>
-
+        <Text style={Loginstyle.titulos}>JIA app Gestão</Text>
       </View>
 
       <TextInput
@@ -42,17 +49,14 @@ function Autentication({ navigation }) {
         keyboardType="numeric"
       />
 
-<Pressable style={Loginstyle.botao}
-   onPress={ ()=>navigation.navigate("Home", { nome: "Edvaldo", numero: "555" })}
->
-
-<Text>
- AUTENTICAR
-</Text>
-</Pressable>
-
-
-      
+      <Pressable
+        style={Loginstyle.botao}
+        onPress={() =>
+          navigation.navigate("Home", { nome: "Edvaldo", numero: "555" })
+        }
+      >
+        <Text>AUTENTICAR</Text>
+      </Pressable>
     </SafeAreaView>
   );
 }
@@ -97,6 +101,91 @@ export default function App() {
             headerTintColor: "#ffffff",
           }}
         />
+
+        <Stack.Screen
+          name="MENU"
+          component={Menus}
+          options={{
+            title: "OPÇÕES",
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
+            headerTintColor: "#ffffff",
+          }}
+        />
+
+     <Stack.Screen
+          name="Saude"
+          component={Saude}
+          options={{
+            title: "OPÇÕES",
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
+            headerTintColor: "#ffffff",
+          }}
+        />
+
+           <Stack.Screen
+          name="CalendarioPlantil"
+          component={CalendarioPlantil}
+          options={{
+            title: "PLANTAS",
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
+            headerTintColor: "#ffffff",
+          }}
+        />
+
+           <Stack.Screen
+          name="ListaCompras"
+          component={ListaCompras}
+          options={{
+            title: "LISTA DE COMPRAS",
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
+            headerTintColor: "#ffffff",
+          }}
+        />
+
+   <Stack.Screen
+          name="Felis"
+          component={Felis}
+          options={{
+            title: "Gatos",
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
+            headerTintColor: "#ffffff",
+          }}
+        />
+
+        <Stack.Screen
+          name="Canis"
+          component={Canis}
+          options={{
+            title: "Caes",
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
+            headerTintColor: "#ffffff",
+          }}
+        />
+
+           <Stack.Screen
+          name="ArmazenarComida"
+          component={ArmazenarComida}
+          options={{
+            title: "ARMAZENAR COMIDA",
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
+            headerTintColor: "#ffffff",
+          }}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -108,41 +197,37 @@ const Loginstyle = StyleSheet.create({
     backgroundColor: "#D5E4CF",
     justifyContent: "space-evenly",
     alignItems: "center",
-    
   },
 
   TexArea: {
-    backgroundColor:"#9DCC9B",
-    minWidth:300,
-    color:"#000000",
-    fontSize:25,
-    padding:3,
+    backgroundColor: "#9DCC9B",
+    minWidth: 300,
+    color: "#000000",
+    fontSize: 25,
+    padding: 3,
   },
 
   imagens: {
-    borderRadius:10,
+    borderRadius: 10,
   },
 
-  Logo:{
-  
+  Logo: {
     alignItems: "center",
   },
-  titulos:{
-    fontSize:30,
+  titulos: {
+    fontSize: 30,
   },
 
-    botao: {
-    
+  botao: {
     minHeight: 20,
     maxHeight: 40,
-    minWidth:150,
-    maxWidth:200,
-    borderRadius:10,
+    minWidth: 150,
+    maxWidth: 200,
+    borderRadius: 10,
     flex: 1,
     flexDirection: "row",
-    backgroundColor:"#2A836B",
+    backgroundColor: "#2A836B",
     alignItems: "center",
     justifyContent: "space-evenly",
   },
-
 });

@@ -1,11 +1,10 @@
 import React from "react";
-import { Text, View, Image, FlatList,StyleSheet} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Vibration, Text, StyleSheet, View, Pressable, SafeAreaView } from "react-native";
 
 
 
-export default function CheckLocal() {
-  return (
+export default function Canis(){
+   return (
     <SafeAreaView style={styleCheck.containe}>
         
       <View>

@@ -126,7 +126,7 @@ export default function APIwheter() {
         Vibration.vibrate();
         atualizar = !atualizar;
         alert(
-          "Mais detalhes em curso"
+          "Atualizado com sucesso."
         );
       }}
       delayLongPress={300}
